@@ -1,8 +1,11 @@
-﻿namespace MauiLibraryTest.ViewModels;
+﻿using MauiLibraryTest.Services;
+
+namespace MauiLibraryTest.ViewModels;
 
 public partial class MainViewModel : BaseViewModel
 {
     MauiLib.TestClass tc = new();
+    CoolService cs = new();
 
     [ObservableProperty]
     private string data;
@@ -10,6 +13,7 @@ public partial class MainViewModel : BaseViewModel
     [RelayCommand]
     public void GetData()
     {
-        Data = tc.GetData();
+        //Data = tc.GetData();
+        Data = $"Get data returned {cs.GetData()}";
     }
 }
