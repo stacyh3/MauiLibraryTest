@@ -2,24 +2,18 @@
 
 #define PLATFORM_ANDROID 0
 #define PLATFORM_IOS 1
+#define PLATFORM_WINDWOS 2
 
-char * SharedLibrary::getTemplateInfo()
-{
-#if PLATFORM == PLATFORM_IOS
-	static char info[] = "Platform for iOS";
-#elif PLATFORM == PLATFORM_ANDROID
-	static char info[] = "Platform for Android";
+#if PLATFORM == PLATFORM_WINDWOS
+#define DLL_EXPORT __declspec(dllexport)
 #else
-	static char info[] = "Undefined platform";
+#define DLL_EXPORT
 #endif
 
-	return info;
-}
-
-SharedLibrary::SharedLibrary()
+extern "C"
 {
-}
-
-SharedLibrary::~SharedLibrary()
-{
+	DLL_EXPORT int getData()
+	{
+		return PLATFORM;
+	}
 }

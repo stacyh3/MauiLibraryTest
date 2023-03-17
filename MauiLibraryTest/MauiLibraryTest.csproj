@@ -47,8 +47,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Maui" Version="3.1.0" />
-	  <PackageReference Include="CommunityToolkit.MVVM" Version="8.1.0" />
+		<None Remove="Resources\Raw\SharedLibrary.dll" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="3.1.0" />
+		<PackageReference Include="CommunityToolkit.MVVM" Version="8.1.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -56,7 +60,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\MauiLib\MauiLib.csproj" />
+		<ProjectReference Include="..\MauiLib\MauiLib.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Include Windows only resources. Only way I could find to include a DLL. -->
+		<MauiAsset Include="Platforms\Windows\Resources\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)"/>
 	</ItemGroup>
 
 	<PropertyGroup Label="MauiAppAccelerator">
