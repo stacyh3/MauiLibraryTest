@@ -63,7 +63,7 @@
 		<ProjectReference Include="..\MauiLib\MauiLib.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
 		<!-- Include Windows only resources. Only way I could find to include a DLL. -->
 		<MauiAsset Include="Platforms\Windows\Resources\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)"/>
 	</ItemGroup>
