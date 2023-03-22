@@ -47,6 +47,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<None Remove="Platforms\iOS\Resources\libSharedLibrary.a" />
 		<None Remove="Resources\Raw\SharedLibrary.dll" />
 	</ItemGroup>
 
@@ -60,12 +61,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<NativeReference Include="libSharedLibrary.a" Kind="Static" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\MauiLib\MauiLib.csproj" />
 	</ItemGroup>
 
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
 		<!-- Include Windows only resources. Only way I could find to include a DLL. -->
-		<MauiAsset Include="Platforms\Windows\Resources\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)"/>
+		<MauiAsset Include="Platforms\Windows\Resources\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
 	<PropertyGroup Label="MauiAppAccelerator">
